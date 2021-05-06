@@ -24,9 +24,18 @@ class ViewController: UIViewController {
         }
     }
     
+    private let notificationsManager = NotificationsManager()
+    
     override func viewDidLoad() {
+        print("ViewController viewDidLoad")
         super.viewDidLoad()
         loggedIn = UserDefaults.standard.string(forKey: emailKey) != nil
+        
+        setupNotifications()
+    }
+    
+    private func setupNotifications() {
+        notificationsManager.addObservers()
     }
 
     @IBAction func login(_ sender: Any) {
